@@ -1,0 +1,35 @@
+@import "../../../../styles/variables";
+
+.product {
+  cursor: pointer;
+  transition: box-shadow 200ms ease-in;
+
+  &:hover {
+    box-shadow: 0 0 2px 1px rgba(#000, 0.1);
+  }
+
+  &__body {
+    height: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 0px 0px 2px white;
+  }
+
+  &__caption {
+    background-color: white;
+    padding: 16px;
+  }
+}
+
+.caption {
+  &__title {
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  &__details {
+    font-size: 12px;
+    color: $color-subtext;
+  }
+}

@@ -1,0 +1,9 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-4">
+    <app-product-cart [items]="(cartState$ | async).items"></app-product-cart>
+  </div>
+  <div class="col-xs-12 col-sm-8">
+    <app-loader [show]="(state$ | async).products.isLoading"></app-loader>
+    <app-product-list [items]="(state$ | async).products.items"></app-product-list>
+  </div>
+</div>

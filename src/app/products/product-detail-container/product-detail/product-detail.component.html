@@ -1,0 +1,42 @@
+<div class="product-detail">
+  <div
+    class="product-detail__body"
+    [ngStyle]="{ 'background-color': product.color || 'rgba(0, 0, 0, 0.5)' }"
+  >
+    {{ product.color || 'Loading' }}
+  </div>
+  <div class="product-detail__caption">
+    <div class="caption">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="caption__title">
+            {{ product.name }}
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-7">
+          <div class="caption__details">
+            <div>ID: {{ product.id }}</div>
+            <div>Name: {{ product.name }}</div>
+            <div>Pantone value: {{ product.pantone_value }}</div>
+            <div>Year: {{ product.year }}</div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-5">
+          <button
+            type="button"
+            class="caption__button"
+            [disabled]="isInCart"
+            (click)="onAddItem()"
+          >
+            <span *ngIf="isInCart; else addToCart">
+              Added
+            </span>
+            <ng-template #addToCart>Add to cart</ng-template>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

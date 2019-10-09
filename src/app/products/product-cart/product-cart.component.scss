@@ -1,0 +1,75 @@
+@import "../../../styles/variables";
+.product-cart {
+  $icon-size: 18px;
+  background-color: $color-primary;
+  color: white;
+  padding: 24px;
+
+  @media (max-width: 48em) {
+    margin-bottom: 20px;
+  }
+
+  &__title {
+    font-size: $icon-size;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+
+    &--as-separator {
+      margin-top: 32px;
+    }
+  }
+
+  &__icon {
+    margin-right: $icon-size;
+    height: $icon-size;
+    svg {
+      width: $icon-size;
+      height: $icon-size;
+    }
+  }
+
+  &__text {
+    font-size: 12px;
+    font-weight: 300;
+  }
+
+  &__cart-wrapper {
+    height: 130px;
+    overflow: auto;
+    border: 1px dashed white;
+    display: flex;
+    flex-direction: column;
+    padding: 6px;
+
+    &--empty {
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  &__item {
+    padding: 10px;
+    margin-bottom: 3px;
+    background-color: rgba($color-text, 0.3);
+  }
+}
+
+.item {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  &__price {
+    font-weight: bold;
+    color: $color-accent;
+    margin-right: 15px;
+  }
+
+  &__name {
+    color: white;
+  }
+
+}

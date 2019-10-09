@@ -1,0 +1,80 @@
+<div class="product-cart">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="product-cart__title">
+        <span class="product-cart__icon">
+          <svg
+            aria-hidden="true"
+            focusable="false"
+            data-prefix="fas"
+            data-icon="address-book"
+            role="img"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 448 512"
+            class="svg-inline--fa fa-address-book fa-w-14 fa-fw fa-2x"
+          >
+            <path
+              fill="currentColor"
+              d="M436 160c6.6 0 12-5.4 12-12v-40c0-6.6-5.4-12-12-12h-20V48c0-26.5-21.5-48-48-48H48C21.5 0 0 21.5 0 48v416c0 26.5 21.5 48 48 48h320c26.5 0 48-21.5 48-48v-48h20c6.6 0 12-5.4 12-12v-40c0-6.6-5.4-12-12-12h-20v-64h20c6.6 0 12-5.4 12-12v-40c0-6.6-5.4-12-12-12h-20v-64h20zm-228-32c35.3 0 64 28.7 64 64s-28.7 64-64 64-64-28.7-64-64 28.7-64 64-64zm112 236.8c0 10.6-10 19.2-22.4 19.2H118.4C106 384 96 375.4 96 364.8v-19.2c0-31.8 30.1-57.6 67.2-57.6h5c12.3 5.1 25.7 8 39.8 8s27.6-2.9 39.8-8h5c37.1 0 67.2 25.8 67.2 57.6v19.2z"
+              class=""
+            ></path>
+          </svg>
+        </span>
+        <span>Contact</span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="product-cart__text">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua.
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="product-cart__title product-cart__title--as-separator">
+        <span class="product-cart__icon"><svg
+            aria-hidden="true"
+            focusable="false"
+            data-prefix="fas"
+            data-icon="shopping-cart"
+            role="img"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 576 512"
+            class="svg-inline--fa fa-shopping-cart fa-w-18 fa-fw fa-2x"
+          >
+            <path
+              fill="currentColor"
+              d="M528.12 301.319l47.273-208C578.806 78.301 567.391 64 551.99 64H159.208l-9.166-44.81C147.758 8.021 137.93 0 126.529 0H24C10.745 0 0 10.745 0 24v16c0 13.255 10.745 24 24 24h69.883l70.248 343.435C147.325 417.1 136 435.222 136 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-15.674-6.447-29.835-16.824-40h209.647C430.447 426.165 424 440.326 424 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-22.172-12.888-41.332-31.579-50.405l5.517-24.276c3.413-15.018-8.002-29.319-23.403-29.319H218.117l-6.545-32h293.145c11.206 0 20.92-7.754 23.403-18.681z"
+              class=""
+            ></path>
+          </svg></span>
+        <span>
+          Cart
+          <span *ngIf="items.length">( {{ items.length }} )</span>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div
+        class="product-cart__cart-wrapper"
+        [ngClass]="{ 'product-cart__cart-wrapper--empty': !items.length}"
+      >
+        <div class="product-cart__item" *ngFor="let item of items">
+          <div class="item">
+            <span class="item__price">{{ item.price }}</span>
+            <span class="item__name">{{ item.name }} {{ item.name }} {{ item.name }} {{ item.name }} {{ item.name }}</span>
+          </div>
+        </div>
+        <div class="product-cart__item" *ngIf="!items.length">
+          Cart it empty
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

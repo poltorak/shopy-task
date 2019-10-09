@@ -1,1 +1,33 @@
-/* You can add global styles to this file, and also import other style files */
+@import "styles/reset";
+@import "~flexboxgrid-sass";
+@import "styles/variables";
+
+@import "styles/components/card";
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 14px;
+  line-height: 1.2;
+  color: $color-text;
+  box-sizing: border-box;
+  background-color: $color-background;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Override flexboxgrid container */
+.container {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 48rem) {
+  .container {
+    width: 100%;
+  }
+  .row {
+    margin: 0;
+  }
+}

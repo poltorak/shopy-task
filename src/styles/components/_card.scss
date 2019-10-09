@@ -1,0 +1,48 @@
+.card {
+  $size: 64px;
+  background: white;
+  font-size: 16px;
+  color: $color-subtext;
+  padding: 48px 64px;
+
+  &__icon {
+    color: $color-primary;
+    width: $size;
+    height: $size;
+    text-align: center;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &--in-circle {
+      border: 2px solid $color-primary;
+      border-radius: 50%;
+    }
+
+    svg {
+      width: $size / 1.5;
+      height: $size / 1.5;
+    }
+  }
+
+  &__title {
+    font-weight: bold;
+    font-size: 24px;
+    color: $color-text;
+    margin-top: 32px;
+    margin-bottom: 16px;
+
+    &--uppercase {
+      text-transform: uppercase;
+    }
+  }
+
+  &__text-row {
+    margin-bottom: 16px;
+
+    &--left {
+      text-align: left;
+    }
+  }
+}
