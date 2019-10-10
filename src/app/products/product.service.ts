@@ -52,6 +52,7 @@ export class ProductService {
         isLoading: true
       }
     };
+
     return this.productsApi.getAllProducts()
       .pipe(
         map((products) => {

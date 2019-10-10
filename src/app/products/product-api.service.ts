@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -15,14 +15,7 @@ export class ProductApiService {
     let params = new HttpParams();
     params = params.set('per_page', '8');
 
-    return this.http.get('https://reqres.in/api/resources', {
-      params,
-      headers: new HttpHeaders({
-        'Cache-Control': 'no-cache, no-store, must-revalidate, post-check=0, pre-check=0',
-        Pragma: 'no-cache',
-        Expires: '0'
-      })
-    })
+    return this.http.get('https://reqres.in/api/resources', { params })
       .pipe(
         map((response: ListResponse<Product>) => response.data),
       );

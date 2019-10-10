@@ -4,6 +4,10 @@
   </div>
   <div class="col-xs-12 col-sm-8">
     <app-loader [show]="(state$ | async).product.isLoading"></app-loader>
-    <app-product-detail [product]="(state$ | async).product.item" [isInCart]="isProductInCart() | async" (addItem)="onAddItem($event)"></app-product-detail>
+    <app-product-detail
+      [product]="(state$ | async).product.item"
+      [isInCart]="isProductInCart() | async"
+      (addItem)="onAddItem($event)"
+    ></app-product-detail>
   </div>
 </div>

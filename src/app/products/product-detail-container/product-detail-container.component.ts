@@ -9,8 +9,7 @@ import { ProductService, ProductsState } from '../product.service';
 @Component({
   selector: 'app-product-detail-container',
   templateUrl: './product-detail-container.component.html',
-  styleUrls: ['./product-detail-container.component.scss']
-})
+ })
 export class ProductDetailContainerComponent implements OnInit, OnDestroy {
   public state$: Observable<ProductsState>;
   public cartState$: Observable<CartState>;

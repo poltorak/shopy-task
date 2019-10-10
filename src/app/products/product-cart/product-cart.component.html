@@ -65,13 +65,19 @@
         class="product-cart__cart-wrapper"
         [ngClass]="{ 'product-cart__cart-wrapper--empty': !items.length}"
       >
-        <div class="product-cart__item" *ngFor="let item of items">
+        <div
+          class="product-cart__item"
+          *ngFor="let item of items"
+        >
           <div class="item">
             <span class="item__price">{{ item.price }}</span>
-            <span class="item__name">{{ item.name }} {{ item.name }} {{ item.name }} {{ item.name }} {{ item.name }}</span>
+            <span class="item__name">{{ item.name }}</span>
           </div>
         </div>
-        <div class="product-cart__item" *ngIf="!items.length">
+        <div
+          class="product-cart__item"
+          *ngIf="!items.length"
+        >
           Cart it empty
         </div>
       </div>

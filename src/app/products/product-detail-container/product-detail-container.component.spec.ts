@@ -1,14 +1,65 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { HttpClientModule } from '@angular/common/http';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { By } from '@angular/platform-browser';
+import { ActivatedRoute, Route } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
+import { BehaviorSubject, Subscription } from 'rxjs';
+import { CartService, CartState } from '../cart.service';
+import { Product } from '../models';
+import { ProductService, ProductsState } from '../product.service';
 import { ProductDetailContainerComponent } from './product-detail-container.component';
 
 describe('ProductDetailContainerComponent', () => {
   let component: ProductDetailContainerComponent;
   let fixture: ComponentFixture<ProductDetailContainerComponent>;
 
+  let MockedProductsService: ProductService;
+  let productState$: BehaviorSubject<ProductsState>;
+  let MockedCartService: CartService;
+  let cartState$: BehaviorSubject<CartState>;
+  let MockedRoute: ActivatedRoute;
+  let requestSubject: Subscription;
+
+  const mockedProduct = { id: 1, name: 'Product 1', price: 30, color: 'red', pantone_value: '15', year: 2000 };
+
   beforeEach(async(() => {
+    requestSubject = new Subscription();
+    productState$ = new BehaviorSubject({
+      products: { isLoading: false, items: [] },
+      product: { isLoading: false, item: {} as Product },
+    });
+
+    cartState$ = new BehaviorSubject({ items: [] });
+
+    MockedRoute = {
+      snapshot: {
+        params: { id: 8 }
+      }
+    } as any as ActivatedRoute;
+
+    MockedCartService = {
+      state$: cartState$,
+      addItem: jasmine.createSpy('addItem'),
+    } as any as CartService;
+
+    MockedProductsService = {
+      state$: productState$,
+      getProduct: jasmine.createSpy()
+        .withArgs(8)
+        .and.returnValue(requestSubject)
+    } as any as ProductService;
+
     TestBed.configureTestingModule({
-      declarations: [ ProductDetailContainerComponent ]
+      imports: [HttpClientModule, RouterTestingModule],
+      declarations: [ ProductDetailContainerComponent ],
+      providers: [
+        { provide: ProductService, useValue: MockedProductsService },
+        { provide: CartService, useValue: MockedCartService },
+        { provide: ActivatedRoute, useValue: MockedRoute },
+      ],
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     })
     .compileComponents();
   }));
@@ -21,5 +72,34 @@ describe('ProductDetailContainerComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should call CartServie.addItem method', () => {
+    component.onAddItem(mockedProduct);
+
+    expect(MockedCartService.addItem).toHaveBeenCalledWith(mockedProduct);
+  });
+
+  it('should return obserable of true if product is in cart', () => {
+    cartState$.next({ items: [mockedProduct ]});
+    productState$.next({
+      products: { isLoading: false, items: [] },
+      product: { isLoading: false, item: mockedProduct }
+    });
+
+    component.isProductInCart().subscribe(val => {
+      expect(val).toBe(true);
+    });
+  });
+
+  it('should set loader show property to true', () => {
+    productState$.next({
+      products: { isLoading: false, items: [] },
+      product: { isLoading: true, item: mockedProduct }
+    });
+
+    fixture.detectChanges();
+    const loaderEl = fixture.debugElement.query(By.css('app-loader'));
+    expect(loaderEl.properties.show).toBe(true);
   });
 });

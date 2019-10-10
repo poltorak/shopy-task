@@ -1,5 +1,8 @@
 <div class="product">
-  <div class="product__body" [ngStyle]="{ 'background-color': product.color }">
+  <div
+    class="product__body"
+    [ngStyle]="{ 'background-color': product.color }"
+  >
     {{ product.color }}
   </div>
   <div class="product__caption">
@@ -8,7 +11,7 @@
         {{ product.name }}
       </div>
       <div class="caption__detail">
-        {{ product.pantone_color}} - {{ product.year }}
+        {{ product.pantone_value }} - {{ product.year }}
       </div>
     </div>
   </div>
