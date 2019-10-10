@@ -7,7 +7,9 @@
   justify-content: center;
   margin-bottom: 60px;
 
-  &__container, &__items, &__item {
+  &__container,
+  &__items,
+  &__item {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -21,7 +23,8 @@
     color: $color-text;
     text-decoration: none;
 
-    &:hover, &--active {
+    &:hover,
+    &--active {
       color: $color-primary;
       background-color: $color-light;
     }
@@ -47,8 +50,8 @@
   }
 
   &__burger {
-      display: none;
-    }
+    display: none;
+  }
 
   @media (max-width: 48rem) {
     &__burger {
@@ -111,7 +114,7 @@
       width: 100%;
 
       &:not(&--logo) {
-      text-align: center;
+        text-align: center;
       }
     }
   }

@@ -9,7 +9,7 @@ import { ProductService, ProductsState } from '../product.service';
 @Component({
   selector: 'app-product-detail-container',
   templateUrl: './product-detail-container.component.html',
- })
+})
 export class ProductDetailContainerComponent implements OnInit, OnDestroy {
   public state$: Observable<ProductsState>;
   public cartState$: Observable<CartState>;
@@ -41,8 +41,8 @@ export class ProductDetailContainerComponent implements OnInit, OnDestroy {
       this.cartState$
     ).pipe(
       take(1),
-      map(([productState, cartState]) => ({ product: productState.product.item, cart: cartState.items})),
-      map(({ product, cart }) => !!cart.find(item => item.id === product.id ))
+      map(([productState, cartState]) => ({ product: productState.product.item, cart: cartState.items })),
+      map(({ product, cart }) => !!cart.find(item => item.id === product.id))
     );
   }
 

@@ -43,10 +43,10 @@
     }
 
     &:disabled {
-      background: rgba($color-accent, 0.5)
+      background: rgba($color-accent, 0.5);
     }
 
-    @media(max-width: 48rem) {
+    @media (max-width: 48rem) {
       margin-top: 10px;
     }
   }

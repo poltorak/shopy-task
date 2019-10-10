@@ -31,6 +31,7 @@ describe('ProductService', () => {
     expect(service).toBeTruthy();
   });
 
+  /* I know this is bad test, it should be done with marbles, but didn't have enough time for them */
   describe('#getProducts', () => {
     it('should call productsApi.getAllProducts and set returned products to state', () => {
       service.getProducts();

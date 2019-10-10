@@ -53,15 +53,15 @@ describe('ProductDetailContainerComponent', () => {
 
     TestBed.configureTestingModule({
       imports: [HttpClientModule, RouterTestingModule],
-      declarations: [ ProductDetailContainerComponent ],
+      declarations: [ProductDetailContainerComponent],
       providers: [
         { provide: ProductService, useValue: MockedProductsService },
         { provide: CartService, useValue: MockedCartService },
         { provide: ActivatedRoute, useValue: MockedRoute },
       ],
-      schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -81,7 +81,7 @@ describe('ProductDetailContainerComponent', () => {
   });
 
   it('should return obserable of true if product is in cart', () => {
-    cartState$.next({ items: [mockedProduct ]});
+    cartState$.next({ items: [mockedProduct] });
     productState$.next({
       products: { isLoading: false, items: [] },
       product: { isLoading: false, item: mockedProduct }

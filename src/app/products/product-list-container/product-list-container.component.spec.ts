@@ -62,7 +62,7 @@ describe('ProductListContainerComponent', () => {
         { provide: CartService, useValue: MockedCartService },
         { provide: ActivatedRoute, useValue: MockedRoute },
       ],
-      schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
       .compileComponents();
   }));
